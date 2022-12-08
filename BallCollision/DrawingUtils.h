@@ -15,7 +15,7 @@ namespace DrawingUtils
 void draw_ball(sf::RenderWindow& window, const Ball& ball);
 void move_ball(Ball& ball, float deltaTime);
 void draw_fps(sf::RenderWindow& window, float fps);
-std::vector<sf::Vector2f> partitioning(size_t splitFrequency, int offset = 0);
+std::vector<sf::Vector2f> partitioning(size_t splitFrequency, size_t offset = 0);
 
 
 }
