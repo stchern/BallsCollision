@@ -4,8 +4,9 @@
 void DrawingUtils::draw_ball(sf::RenderWindow& window, const Ball& ball)
 {
     sf::CircleShape gball;
-    gball.setRadius(ball.r);
     gball.setPosition(ball.p.x, ball.p.y);
+    gball.setOrigin(ball.r, ball.r);
+    gball.setRadius(ball.r);
     window.draw(gball);
 }
 
@@ -14,29 +15,6 @@ void DrawingUtils::move_ball(Ball& ball, float deltaTime)
     const float epsilon = 1e-10;
     float dx = ball.velocity().x * deltaTime;
     float dy = ball.velocity().y * deltaTime;
-
-    // умножение и деление добавлено для визуально правильной отрисовки
-
-//    if ( ball.p.x + 2.0f *  ball.r + dx  >= WINDOW_X ) {
-//        ball.speedX = -ball.speedX;
-//        dx = -ball.p.x + WINDOW_X - 2.0f * ball.r - 1;
-//    }
-
-//    if ( ball.p.y + 2.0f * ball.r + dy >= WINDOW_Y ) {
-//        ball.speedY = -ball.speedY;
-//        dy = -ball.p.y + WINDOW_Y - 2.0f * ball.r - 1;
-//    }
-
-//    if ( ball.p.x - ball.r / 4.0f + dx < 0 ) {
-//        ball.speedX = -ball.speedX;
-//        dx = -(ball.p.x - ball.r / 4.0f);
-//    }
-
-//    if ( ball.p.y - ball.r / 4.0f + dy < 0 ) {
-//        ball.speedY = -ball.speedY;
-//        dy = -(ball.p.y - ball.r / 4.0f );
-//    }
-
 
     if ( (ball.p.x + ball.r + dx + 1.0f - WINDOW_X) > epsilon ) {
         ball.speedX *= -1.0f;
