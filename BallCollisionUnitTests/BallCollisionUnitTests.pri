@@ -4,9 +4,6 @@ CONFIG += BALL_COLLISION_TEST_PRI
 INCLUDEPATH *= $$clean_path($$PWD/../)
 include($$PWD/../BallCollision/BallCollision.pri)
 
-
-}
-
 HEADERS += \
     $$PWD/testBallUtils.h \
     $$PWD/testDrawingUtils.h \
@@ -20,4 +17,5 @@ SOURCES += \
     $$PWD/testVectorUtils.cpp
 
 
+}
 
