@@ -3,6 +3,7 @@
 
 #include "SFML/Graphics.hpp"
 #include <math.h>
+#include "BallCollision/VectorUtils.h"
 
 struct Ball
 {
@@ -14,7 +15,11 @@ struct Ball
     float speedY = 0.0f;
 
     bool operator==(const Ball& other) const{
-        if (p == other.p &&  r == other.r && speedX == other.speedX && speedY == other.speedY)
+        const float epsilon = 1e-6;
+        if (VectorUtils::isAlmostEqual(p, other.p) &&
+                (r - other.r) < epsilon &&
+                (speedX - other.speedX) < epsilon &&
+                (speedY - other.speedY) < epsilon)
             return true;
         return false;
     }
