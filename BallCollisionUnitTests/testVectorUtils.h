@@ -19,6 +19,10 @@ private slots:
     void testDot01();
     void testDot02();
     void testDot03();
+
+    void testIsAlmostEqual01();
+    void testIsAlmostEqual02();
+    void testIsAlmostEqual03();
 };
 
 #endif // TEST_VECTOR_UTILS_H
