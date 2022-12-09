@@ -78,9 +78,9 @@ void TestDrawingUtils::testMoveBall04()
 
 void TestDrawingUtils::testPartitioning01()
 {
-    size_t splitFrequency = 2;
-    std::vector<sf::Vector2f> resultPartitioning = partitioning(splitFrequency);
-    std::vector<sf::Vector2f> ansPartitioning{
+    const size_t splitFrequency = 2;
+    const std::vector<sf::Vector2f> resultPartitioning = partitioning(splitFrequency);
+    const std::vector<sf::Vector2f> ansPartitioning{
         sf::Vector2f{511, 383},
         sf::Vector2f{1023, 383},
         sf::Vector2f{511, 767},
@@ -92,10 +92,10 @@ void TestDrawingUtils::testPartitioning01()
 
 void TestDrawingUtils::testPartitioning02()
 {
-    size_t splitFrequency = 2;
-    int offset = 10;
-    std::vector<sf::Vector2f> resultPartitioning = partitioning(splitFrequency, offset);
-    std::vector<sf::Vector2f> ansPartitioning{
+    const size_t splitFrequency = 2;
+    const int offset = 10;
+    const std::vector<sf::Vector2f> resultPartitioning = partitioning(splitFrequency, offset);
+    const std::vector<sf::Vector2f> ansPartitioning{
         sf::Vector2f{501, 373},
         sf::Vector2f{1013, 373},
         sf::Vector2f{501, 757},
@@ -107,9 +107,9 @@ void TestDrawingUtils::testPartitioning02()
 
 void TestDrawingUtils::testPartitioning03()
 {
-    size_t splitFrequency = 3;
-    std::vector<sf::Vector2f> resultPartitioning = partitioning(splitFrequency);
-    std::vector<sf::Vector2f> ansPartitioning{
+    const size_t splitFrequency = 3;
+    const std::vector<sf::Vector2f> resultPartitioning = partitioning(splitFrequency);
+    const std::vector<sf::Vector2f> ansPartitioning{
         sf::Vector2f{340, 255},
         sf::Vector2f{681, 255},
         sf::Vector2f{1023, 255},
@@ -123,3 +123,4 @@ void TestDrawingUtils::testPartitioning03()
 
     QVERIFY(resultPartitioning == ansPartitioning);
 }
+

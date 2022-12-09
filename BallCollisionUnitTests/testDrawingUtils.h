@@ -20,7 +20,6 @@ private slots:
     void testPartitioning01();
     void testPartitioning02();
     void testPartitioning03();
-
 };
 
 #endif // TEST_DRAWING_UTILS_H

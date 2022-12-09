@@ -10,11 +10,13 @@ include($$PWD/../BallCollision/BallCollision.pri)
 HEADERS += \
     $$PWD/testBallUtils.h \
     $$PWD/testDrawingUtils.h \
+    $$PWD/testEntirePipline.h \
     $$PWD/testVectorUtils.h
 
 SOURCES += \
     $$PWD/testBallUtils.cpp \
     $$PWD/testDrawingUtils.cpp \
+    $$PWD/testEntirePipline.cpp \
     $$PWD/testVectorUtils.cpp
 
 
