@@ -12,9 +12,8 @@ int main()
     sf::RenderWindow window(sf::VideoMode(WINDOW_X, WINDOW_Y), "ball collision demo");
     srand(time(NULL));
 
-
-    int splitFrequency = 2;
-    int offset = 10 + rand() % 10;
+    const int splitFrequency = 2;
+    const int offset = 10 + rand() % 10;
     std::vector<sf::Vector2f> partitioning = DrawingUtils::partitioning(splitFrequency);
     std::vector<sf::Vector2f> partitioningWithOffset = DrawingUtils::partitioning(splitFrequency, offset);
     std::vector<Ball> balls;
@@ -33,17 +32,12 @@ int main()
 //        newBall.speed = 30 + rand() % 30;
         newBall.speedX = (30 + rand() % 30) * dirX;
         newBall.speedY = (30 + rand() % 30) * dirY;
-
-//        newBall.speedX = (30 + rand() % 30) * dirX;
-//        newBall.speedY = (30 + rand() % 30) * dirY;
         balls.push_back(newBall);
     }
-
    // window.setFramerateLimit(60);
 
     sf::Clock clock;
     float lastime = clock.restart().asSeconds();
-
     while (window.isOpen())
     {
         sf::Event event;
@@ -92,7 +86,6 @@ int main()
 //                BallUtils::resolveCollision(balls[currBallIt], balls[nextBallIt]);
 
 
-
         for (auto& ball : balls)
         {
             DrawingUtils::move_ball(ball, deltaTime);
@@ -105,7 +98,7 @@ int main()
             DrawingUtils::draw_ball(window, ball);
         }
 
-		//draw_fps(window, fpscounter.getAverage());
+//        DrawingUtils::draw_fps(window, fpscounter.getAverage());
 		window.display();
     }
     return 0;

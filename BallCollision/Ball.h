@@ -16,10 +16,8 @@ struct Ball
 
     bool operator==(const Ball& other) const{
         const float epsilon = 1e-6;
-        if (VectorUtils::isAlmostEqual(p, other.p) &&
-                (r - other.r) < epsilon &&
-                (speedX - other.speedX) < epsilon &&
-                (speedY - other.speedY) < epsilon)
+        if (VectorUtils::isAlmostEqual(p, other.p) && (r - other.r) < epsilon &&
+                (speedX - other.speedX) < epsilon && (speedY - other.speedY) < epsilon)
             return true;
         return false;
     }
