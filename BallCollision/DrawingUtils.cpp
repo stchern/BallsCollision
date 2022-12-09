@@ -1,5 +1,5 @@
 #include "DrawingUtils.h"
-#include <QDebug>
+#include <QtGlobal>
 
 void DrawingUtils::draw_ball(sf::RenderWindow& window, const Ball& ball)
 {
@@ -11,7 +11,6 @@ void DrawingUtils::draw_ball(sf::RenderWindow& window, const Ball& ball)
 
 void DrawingUtils::move_ball(Ball& ball, float deltaTime)
 {
-//    qDebug()<< deltaTime;
     const float epsilon = 1e-10;
     float dx = ball.velocity().x * deltaTime;
     float dy = ball.velocity().y * deltaTime;
@@ -75,7 +74,7 @@ void DrawingUtils::draw_fps(sf::RenderWindow& window, float fps)
 
 std::vector<sf::Vector2f> DrawingUtils::partitioning(size_t splitFrequency, size_t offset)
 {
-    Q_ASSERT(splitFrequency > 0 && offset >= 0 && offset < qMin(WINDOW_X, WINDOW_Y));
+    Q_ASSERT(splitFrequency > 0 && offset >= 0 && offset < std::min(WINDOW_X, WINDOW_Y));
     std::vector<sf::Vector2f> endPositions;
     // создание разбиения окна, в зависимости от частоты разбиения (splitFrequency)
     // при заданной splitFrequency окно разбивается на splitFrequency*splitFrequency областей
