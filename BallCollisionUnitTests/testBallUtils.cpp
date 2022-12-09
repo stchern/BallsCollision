@@ -111,20 +111,99 @@ void TestBallUtils::testResolveCollision04()
 
 void TestBallUtils::testResolveCollisionForPatrition01()
 {
+    const std::vector<sf::Vector2f> partitioning{
+        sf::Vector2f{501, 373},
+        sf::Vector2f{1013, 373},
+        sf::Vector2f{501, 757},
+        sf::Vector2f{1013, 757}
+    };
 
+    const float speedX = 0.0f;
+    const float speedY = 20.0f;
+    Ball ballF{sf::Vector2f{30.0f, 30.0f}, 1.0f, speedX, speedY};
+    Ball ballS{sf::Vector2f{30.0f, 32.0f}, 1.0f, speedX, (-1) * speedY};
+    Ball ballT{sf::Vector2f{50.0f, 50.0f}, 3.0f, speedX, speedY};
+
+    std::vector<Ball> balls{ballF, ballS, ballT};
+    resolveCollisionForPatrition(partitioning, balls);
+
+    const Ball ansBallF{sf::Vector2f{30.0f, 30.0f}, 1.0f, speedX, (-1) * speedY};
+    const Ball ansBallS{sf::Vector2f{30.0f, 32.0f}, 1.0f,  speedX, speedY};
+    const Ball ansBallT{sf::Vector2f{50.0f, 50.0f}, 3.0f, speedX, speedY};
+
+    QVERIFY(balls[0] == ansBallF);
+    QVERIFY(balls[1] == ansBallS);
+    QVERIFY(balls[2] == ansBallT);
 }
 
 void TestBallUtils::testResolveCollisionForPatrition02()
 {
+    //partitioning includes only small part of the window; balls should not change after resolving Collision ForePart
+    const std::vector<sf::Vector2f> partitioning{
+        sf::Vector2f{10, 10}
+    };
 
+    const float speedX = 0.0f;
+    const float speedY = 20.0f;
+    Ball ballF{sf::Vector2f{30.0f, 30.0f}, 1.0f, speedX, speedY};
+    Ball ballS{sf::Vector2f{30.0f, 32.0f}, 1.0f, speedX, (-1) * speedY};
+    Ball ballT{sf::Vector2f{50.0f, 50.0f}, 3.0f, speedX, speedY};
+
+    std::vector<Ball> balls{ballF, ballS, ballT};
+    resolveCollisionForPatrition(partitioning, balls);
+
+    QVERIFY(balls[0] == ballF);
+    QVERIFY(balls[1] == ballS);
+    QVERIFY(balls[2] == ballT);
 }
 
 void TestBallUtils::testResolveCollisionForPatrition03()
 {
+    //partitioning includes only small part of the window;
+    // but balls are in this part
+    const std::vector<sf::Vector2f> partitioning{
+        sf::Vector2f{60, 60}
+    };
 
+    const float speedX = 0.0f;
+    const float speedY = 20.0f;
+    Ball ballF{sf::Vector2f{30.0f, 30.0f}, 1.0f, speedX, speedY};
+    Ball ballS{sf::Vector2f{30.0f, 32.0f}, 1.0f, speedX, (-1) * speedY};
+    Ball ballT{sf::Vector2f{50.0f, 50.0f}, 3.0f, speedX, speedY};
+
+    std::vector<Ball> balls{ballF, ballS, ballT};
+    resolveCollisionForPatrition(partitioning, balls);
+    const Ball ansBallF{sf::Vector2f{30.0f, 30.0f}, 1.0f, speedX, (-1) * speedY};
+    const Ball ansBallS{sf::Vector2f{30.0f, 32.0f}, 1.0f,  speedX, speedY};
+    const Ball ansBallT{sf::Vector2f{50.0f, 50.0f}, 3.0f, speedX, speedY};
+
+    QVERIFY(balls[0] == ansBallF);
+    QVERIFY(balls[1] == ansBallS);
+    QVERIFY(balls[2] == ansBallT);
 }
 
 void TestBallUtils::testResolveCollisionForPatrition04()
 {
+    //partitioning includes only small part of the window;
+    // some balls are in this part, some balls are not
+    const std::vector<sf::Vector2f> partitioning{
+        sf::Vector2f{50, 50}
+    };
 
+    const float speedX = 0.0f;
+    const float speedY = 20.0f;
+    Ball ball1{sf::Vector2f{30.0f, 30.0f}, 1.0f, speedX, speedY};
+    Ball ball2{sf::Vector2f{30.0f, 32.0f}, 1.0f, speedX, (-1) * speedY};
+    Ball ball3{sf::Vector2f{60.0f, 60.0f}, 3.0f, speedX, speedY};
+    Ball ball4{sf::Vector2f{60.0f, 62.0f}, 3.0f, speedX, (-1) * speedY};
+
+    std::vector<Ball> balls{ball1, ball2, ball3, ball4};
+    resolveCollisionForPatrition(partitioning, balls);
+    const Ball ansBall1{sf::Vector2f{30.0f, 30.0f}, 1.0f, speedX, (-1) * speedY};
+    const Ball ansBall2{sf::Vector2f{30.0f, 32.0f}, 1.0f,  speedX, speedY};
+
+    QVERIFY(balls[0] == ansBall1);
+    QVERIFY(balls[1] == ansBall2);
+    QVERIFY(balls[2] == ball3);
+    QVERIFY(balls[3] == ball4);
 }
